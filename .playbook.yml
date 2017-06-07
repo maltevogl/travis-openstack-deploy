@@ -158,4 +158,4 @@
       become: true
 
     - name: Print app URL
-      debug: msg="Node app available at http://{{ ansible_host }}:3000"
+      debug: msg="Node app is available"
