@@ -14,6 +14,11 @@
         content: "{{ id_rsa_base64| b64decode }}"
         dest: "{{ user_home }}/{{ rsa_filename }}"
         mode: 0600
+        
+    # Generate a public key from the private key
+    # http://docs.ansible.com/ansible/shell_module.html
+    - name: Confirm format
+      shell: "head -1 {{ user_home }}/{{ rsa_filename }} && tail -1 {{ user_home }}/{{ rsa_filename }}"
 
     # Generate a public key from the private key
     # http://docs.ansible.com/ansible/shell_module.html
