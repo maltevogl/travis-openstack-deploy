@@ -19,6 +19,9 @@
     # http://docs.ansible.com/ansible/shell_module.html
     - name: Confirm format
       shell: "head -1 {{ user_home }}/{{ rsa_filename }} && tail -1 {{ user_home }}/{{ rsa_filename }}"
+      register: head
+      
+    - debug: var=head.stdout_lines
 
     # Generate a public key from the private key
     # http://docs.ansible.com/ansible/shell_module.html
