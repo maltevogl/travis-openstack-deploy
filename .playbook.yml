@@ -18,10 +18,16 @@
     # Generate a public key from the private key
     # http://docs.ansible.com/ansible/shell_module.html
     - name: Confirm format
-      shell: "head -1 {{ user_home }}/{{ rsa_filename }} && tail -1 {{ user_home }}/{{ rsa_filename }}"
+      shell: "head -1 {{ user_home }}/{{ rsa_filename }}"
       register: head
       
     - debug: var=head.stdout_lines
+    
+    - name: Confirm format 2
+      shell: "tail -1 {{ user_home }}/{{ rsa_filename }}"
+      register: tail
+      
+    - debug: var=tail.stdout_lines
 
     # Generate a public key from the private key
     # http://docs.ansible.com/ansible/shell_module.html
